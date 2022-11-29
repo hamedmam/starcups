@@ -8,7 +8,7 @@ const iac: AWS['functions'][string] = {
     {
       http: {
         method: 'post',
-        path: 'stores/{storeId}/orders',
+        path: 'stores/{storeId}/order',
         request: {
           schemas: {
             'application/json': schema,
