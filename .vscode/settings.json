@@ -1,0 +1,19 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "serverlessConsole.services": [
+    {
+      "type": "cloudformation",
+      "title": "starcups-devvv",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "stacks": [
+        {
+          "region": "us-east-1",
+          "stackName": "starcups-dev",
+          "stage": "dev"
+        }
+      ]
+    }
+  ]
+}
