@@ -41,7 +41,7 @@ Get orders in progress
 
 ### Architecture Diagrams
 
-![alt text](https://github.com/hamedmam/starcups/blob/main/arch-diagram.jpg?raw=true)
+![alt text](https://github.com/hamedmam/starcups/blob/main/diagrams/starcups.jpg?raw=true)
 
 # Serverless - AWS Node.js Typescript
 
