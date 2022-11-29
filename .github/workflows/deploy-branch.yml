@@ -1,4 +1,4 @@
-name: Deploy a branch
+name: Deploy a development branch
 
 on:
   push:
