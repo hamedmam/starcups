@@ -1,7 +1,6 @@
 import type { AWS } from '@serverless/typescript'
 import { getArn, iamAllow, INTERNAL_STAGE, join } from '@utils/index'
 import { EVENT_STORE_TOPIC } from '@utils/cf-utils'
-import { hashOfBranch } from '@utils/hash-of-branch'
 
 // dbs
 import ordersTable from '@clients/db/projection/resources'
@@ -45,7 +44,6 @@ const serverlessConfiguration: AWS = {
     name: 'aws',
     runtime: 'nodejs16.x',
     region: 'us-east-1',
-    stage: `\${opt:stage, '${hashOfBranch()}'}`,
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
