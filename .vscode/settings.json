@@ -4,13 +4,39 @@
   "serverlessConsole.services": [
     {
       "type": "cloudformation",
-      "title": "starcups-devvv",
+      "title": "starcups-hamed",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "stacks": [
+        {
+          "region": "us-east-1",
+          "stackName": "starcups-hamed",
+          "stage": "dev"
+        }
+      ]
+    },
+    {
+      "type": "cloudformation",
+      "title": "starcups-dev",
       "timeOffsetInMs": 0,
       "awsProfile": "default",
       "stacks": [
         {
           "region": "us-east-1",
           "stackName": "starcups-dev",
+          "stage": "dev"
+        }
+      ]
+    },
+    {
+      "type": "cloudformation",
+      "title": "starcups-prod",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "stacks": [
+        {
+          "region": "us-east-1",
+          "stackName": "starcups-prod",
           "stage": "dev"
         }
       ]

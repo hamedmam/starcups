@@ -1,3 +1,48 @@
+### Endpoints
+
+dev: https://5lrgsriog9.execute-api.us-east-1.amazonaws.com/dev
+prod: https://y8bk2iv5z5.execute-api.us-east-1.amazonaws.com/prod
+
+Create order
+`POST /stores/{storeId}/order`
+Body
+
+```
+{
+    "idempotencyKey": "123456",
+    "items": [
+        {
+            "name": "item name",
+            "description": "item description",
+            "price": "20",
+        }
+    ]
+}
+```
+
+Update order status
+`PATCH /stores/{storeId}/orders/{orderId}`
+Body
+
+```
+{
+    "status": "COMPLETED"
+}
+```
+
+Delete order
+`DELETE /stores/{storeId}/orders/{orderId}`
+
+Get order by id
+`GET /stores/{storeId}/orders/{orderId}`
+
+Get orders in progress
+`GET /stores/{storeId}/orders/in-progress`
+
+### Architecture Diagrams
+
+![alt text](https://github.com/hamedmam/starcups/blob/main/arch-diagram.jpg?raw=true)
+
 # Serverless - AWS Node.js Typescript
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/).

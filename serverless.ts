@@ -12,7 +12,6 @@ import updateOrder from '@functions/api/commands/update-order'
 import deleteOrder from '@functions/api/commands/delete-order'
 
 // queries
-import getOrders from '@functions/api/queries/get-orders'
 import getOrderById from '@functions/api/queries/get-order-by-id'
 import getOrdersInProgress from '@functions/api/queries/get-orders-in-progress'
 
@@ -88,7 +87,6 @@ const serverlessConfiguration: AWS = {
     createOrder,
     updateOrder,
     deleteOrder,
-    getOrders,
     getOrderById,
     getOrdersInProgress,
     orderCreatedEventHandler,
