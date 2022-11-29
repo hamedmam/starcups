@@ -1,8 +1,7 @@
 export default {
   type: 'object',
   properties: {
-    orderId: { type: 'string' },
-    storeId: { type: 'string' },
+    idempotencyKey: { type: 'string' },
     items: {
       type: 'array',
       items: {
@@ -15,4 +14,5 @@ export default {
       },
     },
   },
+  required: ['idempotencyKey', 'items'],
 } as const
