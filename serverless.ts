@@ -43,6 +43,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
+    region: 'us-east-1',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -116,6 +117,16 @@ const serverlessConfiguration: AWS = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+    },
+    stageConfig: {
+      // only for demonstration purposes
+      // this is how we set environment variables for different stages
+      dev: {
+        someExternalArn: 'arn:aws',
+      },
+      prod: {
+        someExternalArn: 'arn:aws',
+      },
     },
   },
 }
