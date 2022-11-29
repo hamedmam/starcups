@@ -136,10 +136,21 @@ export const projectionDb: ProjectionClient = {
     }
 
     const itemsWithoutStatus = result.Items.filter((item) => item.name)
+    const itemsWithInProgressStatus = itemsWithoutStatus.filter((item) => {
+      const foundParent = result.Items.find(
+        (rootItem) => rootItem.pk === item.pk && rootItem.sk === 'STATUS',
+      )
+
+      if (!foundParent) {
+        return false
+      }
+
+      return foundParent.orderStatus === 'IN_PROGRESS'
+    })
 
     const orders: (Order & { sk: string })[] = []
 
-    itemsWithoutStatus.map((item) => {
+    itemsWithInProgressStatus.forEach((item) => {
       if (!orders.find((order) => order.id === item.pk.split('#')[1])) {
         orders.push({
           id: item.pk.split('#')[1],
@@ -150,10 +161,8 @@ export const projectionDb: ProjectionClient = {
       }
     })
 
-    const remainingOrders = orders.filter((order) => order.sk === 'STATUS')
-
-    remainingOrders.map((order) => {
-      const items = itemsWithoutStatus.filter(
+    orders.forEach((order) => {
+      const items = itemsWithInProgressStatus.filter(
         (item) => item.pk.split('#')[1] === order.id,
       )
       order.items = items.map((item) => ({
