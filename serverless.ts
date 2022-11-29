@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript'
 import { getArn, iamAllow, INTERNAL_STAGE, join } from '@utils/index'
 import { EVENT_STORE_TOPIC } from '@utils/cf-utils'
+import { hashOfBranch } from '@utils/hash-of-branch'
 
 // dbs
 import ordersTable from '@clients/db/projection/resources'
@@ -43,6 +44,8 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
+    region: 'us-east-1',
+    stage: `\${opt:stage, '${hashOfBranch()}'}`,
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -116,6 +119,16 @@ const serverlessConfiguration: AWS = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+    },
+    stageConfig: {
+      // only for demonstration purposes
+      // this is how we set environment variables for different stages
+      dev: {
+        someExternalArn: 'arn:aws',
+      },
+      prod: {
+        someExternalArn: 'arn:aws',
+      },
     },
   },
 }

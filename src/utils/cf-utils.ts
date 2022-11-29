@@ -1,8 +1,5 @@
 import { OrderEvent } from 'src/types/events'
-import { getArn } from '.'
-
-// TODO handle internal stage
-const INTERNAL_STAGE = 'dev'
+import { getArn, INTERNAL_STAGE } from '.'
 
 export const EVENT_STORE_TOPIC = 'EventStoreTopic'
 
