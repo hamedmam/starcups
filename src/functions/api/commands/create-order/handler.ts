@@ -14,8 +14,7 @@ const createOrder: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
   // temporary use of idempotency key to prevent duplicate orders
   // ideally this would be handled from the request context
   const { items, idempotencyKey } = event.body
-
-  const storeId = `store_${uuid()}`
+  const { storeId } = event.pathParameters
   const orderId = `order_${uuid()}`
 
   const events = await eventStore.getEvents(storeId)
