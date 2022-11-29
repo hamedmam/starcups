@@ -183,6 +183,7 @@ export const projectionDb: ProjectionClient = {
                 name: item.name,
                 description: item.description,
                 price: item.price,
+                orderStatus: 'IN_PROGRESS',
               },
             },
           }
@@ -205,7 +206,6 @@ export const projectionDb: ProjectionClient = {
       .promise()
   },
   updateOrderStatus: async ({ storeId, orderId, orderStatus }) => {
-    console.log('ORDER STATUS', orderStatus)
     const params = {
       TableName,
       Key: {
