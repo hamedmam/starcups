@@ -128,6 +128,13 @@ export const projectionDb: ProjectionClient = {
     }
     const result = await client.query(params).promise()
 
+    if (!result.Items) {
+      return {
+        storeId,
+        orders: [],
+      }
+    }
+
     const itemsWithoutStatus = result.Items.filter((item) => item.name)
 
     const orders: (Order & { sk: string })[] = []
